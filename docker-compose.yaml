@@ -1,5 +1,0 @@
-services:
-  coniller:
-   image: ghcr.io/meneillos/coniller:release
-   env_file:
-     - .env
