@@ -29,7 +29,7 @@ var (
 
 func InitBroker() {
 	err := godotenv.Load()
-	logOnError(err, ERROR_LOADING_ENV, true)
+	logOnError(err, ERROR_LOADING_ENV_FILE)
 	rabbit_url, err := base64.StdEncoding.DecodeString(os.Getenv("RABBITMQ_URL"))
 	logOnError(err, ERROR_DECODING_RABBITMQ_URL, true)
 	conn, err = amqp.Dial(string(rabbit_url))
