@@ -1,5 +1,5 @@
 services:
   coniller:
    image: ghcr.io/meneillos/coniller:release
-   environment:
-     - RABBITMQ_URL=${RABBITMQ_URL}
+   env_file:
+     - .env
