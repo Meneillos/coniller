@@ -20,10 +20,11 @@ const (
 	ERROR_UNMARSHALLING_MESSAGE
 	ERROR_CONSUMING_MESSAGE
 	ERROR_SETTING_QOS
+	ERROR_GETTING_HOSTNAME
 )
 
 func logOnError(err error, error_type Error, critical ...bool) {
-	msg := fmt.Sprintf("Error %d: %s", error_type, err)
+	msg := fmt.Sprintf("%s | Error %d: %s", Hostname, error_type, err)
 	crit := false
 	if len(critical) > 0 {
 		crit = critical[0]

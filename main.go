@@ -5,9 +5,15 @@ import (
 	"fmt"
 	"log"
 	"math/rand"
+	"os"
 )
 
+var Hostname string
+
 func main() {
+	var err error
+	Hostname, err = os.Hostname()
+	logOnError(err, ERROR_GETTING_HOSTNAME, true)
 	InitBroker()
 	defer CloseBroker()
 
@@ -33,6 +39,6 @@ func main() {
 	for m := range msgs {
 		err = json.Unmarshal(m.Body, &message)
 		logOnError(err, ERROR_UNMARSHALLING_MESSAGE)
-		log.Printf("Received a message: %s", message.Subject)
+		log.Printf("%s | Received a message: %s", Hostname, message.Subject)
 	}
 }
